@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Victoria Badminton Centre — 36 Courts | Melbourne</title>
+<meta name="description" content="Victoria Badminton Centre — Melbourne's premier 36-court badminton facility. Book a court, join the community, play your best." />
+<link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
+
+<!-- Typography: distinctive trio — Bebas Neue (display), Fraunces (editorial serif), Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ——— Design Tokens (drawn from the logo) ——— */
+  :root {
+    --olive-900: #2a3314;
+    --olive-800: #3d4a1f;
+    --olive-700: #4a5927;
+    --olive-600: #5c6d33;
+    --coral:     #e8936b;
+    --coral-dk:  #d87a4e;
+    --gold:      #d4b85a;
+    --cream:     #f4efe3;
+    --bone:      #eae3d1;
+    --ink:       #1a1f0d;
+
+    --radius: 2px;
+    --shadow-lg: 0 30px 60px -20px rgba(26,31,13,.35);
+    --ease: cubic-bezier(.22,.61,.36,1);
+
+    /* Toggle this OFF (set to 0) when you're ready to go live without the coming-soon overlay */
+    --coming-soon: 1;
+  }
+
+  /* ——— Base ——— */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+  /* Paper-grain overlay for warmth */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(42,51,20,.04) 1px, transparent 0);
+    background-size: 3px 3px;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 48px);
+  }
+
+  /* ——— Typography ——— */
+  .display {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    letter-spacing: .01em;
+    line-height: .88;
+    text-transform: uppercase;
+  }
+  .editorial {
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+  }
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+  }
+
+  /* ——— NAV ——— */
+  nav.top {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    padding: 18px 0;
+    background: rgba(244,239,227,.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(42,51,20,.08);
+    transition: padding .3s var(--ease);
+  }
+  nav.top .row {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .brand img {
+    width: 46px; height: 46px; border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(42,51,20,.2);
+  }
+  .brand-text .l1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px; letter-spacing: .06em; color: var(--olive-800);
+    line-height: 1;
+  }
+  .brand-text .l2 {
+    font-size: 10px; letter-spacing: .3em; color: var(--olive-700); text-transform: uppercase;
+    margin-top: 2px;
+  }
+  nav ul { display: flex; gap: 32px; list-style: none; padding: 0; margin: 0; }
+  nav ul a {
+    font-size: 13px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--olive-900); position: relative; padding: 4px 0;
+  }
+  nav ul a::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px;
+    background: var(--coral); transform: scaleX(0); transform-origin: right;
+    transition: transform .4s var(--ease);
+  }
+  nav ul a:hover::after { transform: scaleX(1); transform-origin: left; }
+  @media (max-width: 820px) { nav ul { display: none; } }
+
+  .btn-book {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px; letter-spacing: .12em;
+    background: var(--olive-800); color: var(--cream);
+    padding: 14px 26px 12px; border-radius: var(--radius);
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: all .3s var(--ease);
+    border: 1px solid var(--olive-800);
+  }
+  .btn-book:hover {
+    background: var(--coral); border-color: var(--coral); color: var(--olive-900);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px -8px rgba(232,147,107,.5);
+  }
+  .btn-book .arrow { transition: transform .3s var(--ease); }
+  .btn-book:hover .arrow { transform: translateX(4px); }
+
+  /* ——— HERO ——— */
+  header.hero {
+    position: relative;
+    min-height: 100vh;
+    padding: 140px 0 80px;
+    overflow: hidden;
+    background: var(--olive-800);
+    color: var(--cream);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(180deg, rgba(42,51,20,.5) 0%, rgba(42,51,20,.85) 70%, var(--olive-800) 100%),
+      url('https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=2000&q=80');
+    background-size: cover; background-position: center;
+  }
+  .hero-bg::after {
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse at 80% 30%, rgba(232,147,107,.25), transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(212,184,90,.15), transparent 55%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px;
+    align-items: end;
+  }
+  @media (max-width: 900px) {
+    .hero-content { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 12vw, 180px);
+    line-height: .86;
+    letter-spacing: -.005em;
+    margin: 0 0 24px;
+    text-transform: uppercase;
+  }
+  .hero h1 .line { display: block; overflow: hidden; }
+  .hero h1 .line span { display: inline-block; animation: rise 1s var(--ease) both; }
+  .hero h1 .line:nth-child(2) span { animation-delay: .1s; }
+  .hero h1 .line:nth-child(3) span { animation-delay: .2s; color: var(--coral); font-style: italic; font-family: 'Fraunces', serif; font-weight: 300; text-transform: none; letter-spacing: -.02em; }
+  @keyframes rise { from { transform: translateY(110%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+  .hero-meta {
+    display: flex; flex-direction: column; gap: 28px;
+    animation: fade .9s .5s var(--ease) both;
+  }
+  @keyframes fade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-meta p.lede {
+    font-family: 'Fraunces', serif;
+    font-size: 19px; font-weight: 300;
+    line-height: 1.5; max-width: 38ch;
+    color: var(--bone);
+  }
+  .hero-cta {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+  .btn-hero-primary {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px; letter-spacing: .12em;
+    background: var(--coral); color: var(--olive-900);
+    padding: 18px 32px 16px; border-radius: var(--radius);
+    display: inline-flex; align-items: center; gap: 12px;
+    transition: all .3s var(--ease);
+    box-shadow: 0 10px 30px -10px rgba(232,147,107,.6);
+  }
+  .btn-hero-primary:hover {
+    background: var(--cream); transform: translateY(-3px);
+    box-shadow: 0 15px 40px -10px rgba(244,239,227,.3);
+  }
+  .btn-hero-secondary {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px; letter-spacing: .12em;
+    color: var(--cream); border: 1px solid rgba(244,239,227,.4);
+    padding: 18px 32px 16px; border-radius: var(--radius);
+    transition: all .3s var(--ease);
+  }
+  .btn-hero-secondary:hover { border-color: var(--cream); background: rgba(244,239,227,.1); }
+
+  /* Scroll cue */
+  .hero-scroll {
+    position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+    z-index: 3; text-align: center; color: var(--bone);
+    font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+  }
+  .hero-scroll .line {
+    width: 1px; height: 40px; background: var(--bone); margin: 8px auto 0;
+    animation: scroll-pulse 2s infinite;
+  }
+  @keyframes scroll-pulse { 0%,100% { opacity: .3; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.3); } }
+
+  /* Vertical nav marker */
+  .hero-vert {
+    position: absolute; right: 30px; top: 50%; transform: rotate(90deg) translateX(50%); transform-origin: right center;
+    z-index: 3;
+    font-size: 10px; letter-spacing: .35em; text-transform: uppercase; color: var(--bone); opacity: .7;
+  }
+  @media (max-width: 900px) { .hero-vert { display: none; } }
+
+  /* ——— STATS STRIP (36 courts highlight) ——— */
+  .stats {
+    background: var(--olive-900);
+    color: var(--cream);
+    padding: 70px 0;
+    position: relative;
+    z-index: 2;
+  }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  @media (max-width: 800px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat {
+    padding: 20px 24px;
+    border-right: 1px solid rgba(244,239,227,.12);
+    text-align: left;
+  }
+  .stat:last-child { border-right: none; }
+  @media (max-width: 800px) {
+    .stat:nth-child(2) { border-right: none; }
+    .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid rgba(244,239,227,.12); padding-bottom: 32px; margin-bottom: 8px;}
+  }
+  .stat .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 8vw, 96px);
+    line-height: 1;
+    color: var(--coral);
+    display: flex; align-items: baseline; gap: 6px;
+  }
+  .stat .num sup {
+    font-size: .35em; color: var(--gold); font-family: 'Fraunces', serif; font-style: italic; font-weight: 400;
+  }
+  .stat .label {
+    font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
+    margin-top: 10px; color: var(--bone);
+  }
+  .stat.feature {
+    background: linear-gradient(135deg, var(--coral) 0%, var(--coral-dk) 100%);
+    color: var(--olive-900);
+    padding: 32px 24px;
+    position: relative;
+  }
+  .stat.feature .num { color: var(--olive-900); }
+  .stat.feature .num sup { color: var(--olive-800); }
+  .stat.feature .label { color: var(--olive-900); font-weight: 600; }
+  .stat.feature::after {
+    content: '★'; position: absolute; top: 16px; right: 20px;
+    font-size: 18px; color: var(--olive-900); opacity: .4;
+  }
+
+  /* ——— ABOUT ——— */
+  section.about {
+    padding: 140px 0;
+    position: relative;
+    background: var(--cream);
+  }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.1fr;
+    gap: 80px; align-items: center;
+  }
+  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 48px; } }
+  .about-imgs {
+    position: relative; aspect-ratio: 4/5;
+  }
+  .about-imgs img {
+    position: absolute; border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    object-fit: cover;
+  }
+  .about-imgs .img-lg {
+    width: 80%; height: 80%; top: 0; left: 0;
+  }
+  .about-imgs .img-sm {
+    width: 55%; height: 55%; bottom: 0; right: 0;
+    border: 8px solid var(--cream);
+  }
+  .about-imgs .badge {
+    position: absolute; top: -20px; right: 10%;
+    background: var(--gold); color: var(--olive-900);
+    width: 120px; height: 120px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; font-family: 'Bebas Neue', sans-serif; font-size: 18px;
+    line-height: 1.05; letter-spacing: .05em;
+    transform: rotate(-8deg);
+    z-index: 2;
+    box-shadow: 0 8px 20px rgba(42,51,20,.25);
+  }
+  .about-text .eyebrow { color: var(--coral-dk); margin-bottom: 20px; display: block; }
+  .about-text h2 {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 1.02;
+    margin: 0 0 28px;
+    color: var(--olive-900);
+    letter-spacing: -.02em;
+  }
+  .about-text h2 em {
+    font-style: italic; color: var(--coral-dk); font-weight: 400;
+  }
+  .about-text p {
+    font-size: 17px; line-height: 1.7; color: var(--olive-900); max-width: 52ch;
+    margin: 0 0 18px;
+  }
+  .about-features {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+    margin-top: 36px;
+  }
+  .feat {
+    padding: 18px 20px;
+    border: 1px solid rgba(42,51,20,.15);
+    border-radius: var(--radius);
+    background: rgba(255,255,255,.5);
+  }
+  .feat .feat-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px; letter-spacing: .08em;
+    color: var(--olive-800); margin-bottom: 4px;
+  }
+  .feat .feat-desc {
+    font-size: 13px; color: var(--olive-700);
+  }
+
+  /* ——— GALLERY ——— */
+  section.gallery {
+    padding: 120px 0;
+    background: var(--olive-900);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .gallery-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 60px; gap: 24px; flex-wrap: wrap;
+  }
+  .gallery-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7vw, 96px);
+    letter-spacing: 0;
+    line-height: .9;
+    margin: 12px 0 0;
+    text-transform: uppercase;
+  }
+  .gallery-header h2 em {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+    color: var(--coral); text-transform: none; letter-spacing: -.02em;
+  }
+  .gallery-header p {
+    font-family: 'Fraunces', serif; font-size: 17px; font-weight: 300;
+    max-width: 36ch; color: var(--bone);
+    margin: 0;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 140px;
+    gap: 16px;
+  }
+  .gallery-grid .g-item {
+    position: relative; overflow: hidden; border-radius: var(--radius);
+    background: var(--olive-800);
+  }
+  .gallery-grid .g-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .8s var(--ease), filter .8s var(--ease);
+    filter: saturate(.85);
+  }
+  .gallery-grid .g-item:hover img { transform: scale(1.08); filter: saturate(1.1); }
+  .gallery-grid .g-item::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(42,51,20,.7) 100%);
+    opacity: 0; transition: opacity .4s var(--ease);
+  }
+  .gallery-grid .g-item:hover::after { opacity: 1; }
+  .gallery-grid .g-item .g-label {
+    position: absolute; bottom: 16px; left: 18px; z-index: 2;
+    font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: .1em;
+    color: var(--cream); opacity: 0; transform: translateY(10px);
+    transition: all .4s var(--ease);
+  }
+  .gallery-grid .g-item:hover .g-label { opacity: 1; transform: translateY(0); }
+
+  /* grid spans — creates rhythm */
+  .g1 { grid-column: span 5; grid-row: span 3; }
+  .g2 { grid-column: span 4; grid-row: span 2; }
+  .g3 { grid-column: span 3; grid-row: span 2; }
+  .g4 { grid-column: span 3; grid-row: span 2; }
+  .g5 { grid-column: span 4; grid-row: span 2; }
+  .g6 { grid-column: span 5; grid-row: span 2; }
+  @media (max-width: 900px) {
+    .gallery-grid { grid-template-columns: repeat(6, 1fr); grid-auto-rows: 120px; }
+    .g1 { grid-column: span 6; grid-row: span 2; }
+    .g2, .g5 { grid-column: span 3; }
+    .g3, .g4 { grid-column: span 3; }
+    .g6 { grid-column: span 6; }
+  }
+
+  /* ——— HOURS + MAP ——— */
+  section.info {
+    padding: 140px 0;
+    background: var(--cream);
+  }
+  .info-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px;
+  }
+  @media (max-width: 900px) { .info-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .info-card {
+    background: var(--olive-800); color: var(--cream);
+    padding: 48px 44px; border-radius: var(--radius);
+    position: relative; overflow: hidden;
+  }
+  .info-card::before {
+    content: ''; position: absolute; top: -40px; right: -40px;
+    width: 180px; height: 180px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,147,107,.25), transparent 70%);
+  }
+  .info-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px; letter-spacing: .02em;
+    margin: 0 0 8px;
+    position: relative;
+  }
+  .info-card .sub {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+    font-size: 16px; color: var(--coral); margin-bottom: 32px;
+  }
+  .hours-list { list-style: none; padding: 0; margin: 0; }
+  .hours-list li {
+    display: flex; justify-content: space-between; padding: 14px 0;
+    border-bottom: 1px dashed rgba(244,239,227,.2);
+    font-size: 15px;
+    align-items: baseline;
+  }
+  .hours-list li:last-child { border-bottom: none; }
+  .hours-list .day {
+    font-weight: 500; letter-spacing: .05em; text-transform: uppercase; font-size: 13px;
+  }
+  .hours-list .time {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    color: var(--bone);
+  }
+  .hours-list li.open { color: var(--coral); }
+  .hours-list li.open .time { color: var(--coral); }
+  .info-card .note {
+    margin-top: 28px; padding: 16px 20px;
+    background: rgba(232,147,107,.14);
+    border-left: 3px solid var(--coral);
+    font-size: 14px; line-height: 1.5;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .map-wrap {
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .address-block {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .address-block .eyebrow { color: var(--coral-dk); }
+  .address-block h3 {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 28px; line-height: 1.2; margin: 0;
+    color: var(--olive-900);
+  }
+  .address-block p { margin: 0; font-size: 15px; color: var(--olive-700); }
+  .map-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/11;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(42,51,20,.15);
+  }
+  .map-frame iframe { width: 100%; height: 100%; border: 0; filter: saturate(.9); }
+
+  /* ——— PARTNERS ——— */
+  section.partners {
+    padding: 100px 0;
+    background: var(--bone);
+    border-top: 1px solid rgba(42,51,20,.08);
+    border-bottom: 1px solid rgba(42,51,20,.08);
+  }
+  .partners-header {
+    text-align: center; margin-bottom: 56px;
+  }
+  .partners-header .eyebrow { color: var(--coral-dk); }
+  .partners-header h2 {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: clamp(32px, 4vw, 48px);
+    color: var(--olive-900);
+    margin: 12px 0 0; letter-spacing: -.01em;
+  }
+  .partners-header h2 em { font-style: italic; color: var(--coral-dk); }
+  .partners-row {
+    display: flex; justify-content: center; align-items: center;
+    gap: clamp(40px, 8vw, 120px); flex-wrap: wrap;
+  }
+  .partner {
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    transition: transform .3s var(--ease);
+  }
+  .partner:hover { transform: translateY(-4px); }
+  .partner .logo-box {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px; letter-spacing: .04em;
+    color: var(--olive-900);
+    padding: 18px 36px;
+    border: 2px solid var(--olive-800);
+    border-radius: var(--radius);
+    position: relative;
+    background: var(--cream);
+  }
+  .partner .logo-box.yonex { color: #0055a4; border-color: #0055a4; }
+  .partner .logo-box.yonex::after {
+    content: 'ⓇEG.';
+    font-family: 'Inter', sans-serif;
+    font-size: 9px; letter-spacing: .1em;
+    position: absolute; top: 6px; right: 8px;
+    color: #0055a4; opacity: .6;
+  }
+  .partner .logo-box.victor { color: #d4301e; border-color: #d4301e; }
+  .partner .logo-box.victor::before {
+    content: '▲';
+    font-size: 18px;
+    margin-right: 8px;
+    color: #d4301e;
+  }
+  .partner .partner-label {
+    font-size: 11px; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--olive-700);
+  }
+  .partner-placeholder {
+    border: 2px dashed rgba(42,51,20,.3);
+    color: rgba(42,51,20,.5);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px; letter-spacing: .1em;
+    padding: 28px 40px;
+    border-radius: var(--radius);
+  }
+
+  /* ——— BOOK CTA ——— */
+  section.book-cta {
+    padding: 140px 0;
+    background:
+      linear-gradient(135deg, rgba(42,51,20,.92) 0%, rgba(42,51,20,.96) 100%),
+      url('https://images.unsplash.com/photo-1613918431703-aa50889e3be7?auto=format&fit=crop&w=2000&q=80');
+    background-size: cover; background-position: center;
+    background-attachment: fixed;
+    color: var(--cream);
+    text-align: center;
+    position: relative;
+  }
+  .book-cta h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 10vw, 140px);
+    line-height: .9;
+    margin: 0 0 24px;
+    letter-spacing: .01em;
+  }
+  .book-cta h2 em {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+    color: var(--coral); letter-spacing: -.02em;
+  }
+  .book-cta p {
+    font-family: 'Fraunces', serif; font-size: 20px; font-weight: 300;
+    max-width: 48ch; margin: 0 auto 48px;
+    color: var(--bone);
+  }
+  .btn-giant {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: .15em;
+    background: var(--coral); color: var(--olive-900);
+    padding: 26px 56px 22px; border-radius: var(--radius);
+    display: inline-flex; align-items: center; gap: 14px;
+    transition: all .3s var(--ease);
+    box-shadow: 0 20px 40px -12px rgba(232,147,107,.5);
+  }
+  .btn-giant:hover {
+    background: var(--cream); transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 24px 50px -10px rgba(244,239,227,.4);
+  }
+
+  /* ——— FOOTER ——— */
+  footer {
+    background: var(--olive-900);
+    color: var(--bone);
+    padding: 80px 0 36px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px; margin-bottom: 60px;
+  }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px;} }
+  .footer-brand { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+  .footer-brand img { width: 52px; height: 52px; border-radius: 50%; }
+  .footer-brand .display { font-size: 22px; letter-spacing: .05em; color: var(--cream); }
+  footer .tagline {
+    font-family: 'Fraunces', serif; font-weight: 300; font-style: italic;
+    font-size: 16px; max-width: 30ch; color: var(--bone); margin: 0 0 28px;
+  }
+  .socials { display: flex; gap: 12px; }
+  .socials a {
+    width: 42px; height: 42px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(244,239,227,.25);
+    border-radius: 50%;
+    color: var(--bone);
+    transition: all .3s var(--ease);
+  }
+  .socials a:hover {
+    background: var(--coral); color: var(--olive-900); border-color: var(--coral);
+    transform: translateY(-3px);
+  }
+  .socials svg { width: 18px; height: 18px; }
+
+  .footer-col h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px; letter-spacing: .2em;
+    color: var(--coral); margin: 0 0 16px;
+  }
+  .footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a { font-size: 14px; color: var(--bone); transition: color .3s var(--ease); }
+  .footer-col a:hover { color: var(--coral); }
+  .footer-col p { font-size: 14px; margin: 0 0 8px; line-height: 1.5; }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(244,239,227,.12);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+    font-size: 12px; letter-spacing: .1em; color: rgba(234,227,209,.6);
+    text-transform: uppercase;
+  }
+
+  /* ——— COMING SOON OVERLAY ——— */
+  .coming-soon {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background:
+      linear-gradient(135deg, rgba(42,51,20,.95) 0%, rgba(61,74,31,.97) 100%),
+      url('https://images.unsplash.com/photo-1617228034100-5d8c59b6f27f?auto=format&fit=crop&w=2000&q=80');
+    background-size: cover; background-position: center;
+    color: var(--cream);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 40px;
+    text-align: center;
+    opacity: calc(var(--coming-soon));
+    pointer-events: auto;
+    transition: opacity .6s var(--ease);
+    overflow: auto;
+  }
+  .coming-soon.hidden { opacity: 0; pointer-events: none; }
+  .cs-inner { max-width: 720px; width: 100%; animation: fade 1s var(--ease) both; }
+  .cs-logo {
+    width: 140px; height: 140px; border-radius: 50%;
+    margin: 0 auto 32px;
+    box-shadow: 0 10px 40px rgba(0,0,0,.3);
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  .cs-eyebrow {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px; letter-spacing: .5em;
+    color: var(--coral); margin-bottom: 20px;
+  }
+  .coming-soon h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 11vw, 140px);
+    line-height: .9;
+    margin: 0 0 12px;
+    letter-spacing: .01em;
+  }
+  .coming-soon h1 em {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+    color: var(--coral); letter-spacing: -.02em;
+  }
+  .coming-soon .cs-tagline {
+    font-family: 'Fraunces', serif; font-size: 19px; font-weight: 300;
+    max-width: 44ch; margin: 0 auto 44px;
+    color: var(--bone); line-height: 1.6;
+  }
+  .cs-countdown {
+    display: flex; justify-content: center; gap: clamp(16px, 4vw, 36px);
+    margin-bottom: 44px; flex-wrap: wrap;
+  }
+  .cs-unit {
+    min-width: 80px;
+  }
+  .cs-unit .val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7vw, 72px);
+    color: var(--coral); line-height: 1;
+    display: block;
+  }
+  .cs-unit .lbl {
+    font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--bone); margin-top: 6px; display: block;
+  }
+  .cs-form {
+    display: flex; max-width: 480px; margin: 0 auto 24px;
+    gap: 0;
+    border: 1px solid rgba(244,239,227,.3);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: rgba(244,239,227,.06);
+  }
+  .cs-form input {
+    flex: 1;
+    padding: 16px 20px;
+    background: transparent;
+    border: none;
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    letter-spacing: .05em;
+    outline: none;
+  }
+  .cs-form input::placeholder { color: rgba(244,239,227,.5); }
+  .cs-form button {
+    background: var(--coral); color: var(--olive-900);
+    padding: 0 28px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px; letter-spacing: .15em;
+    transition: background .3s var(--ease);
+  }
+  .cs-form button:hover { background: var(--cream); }
+  .cs-socials {
+    display: flex; justify-content: center; gap: 14px;
+    margin-bottom: 32px;
+  }
+  .cs-socials a {
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(244,239,227,.3);
+    border-radius: 50%;
+    color: var(--bone);
+    transition: all .3s var(--ease);
+  }
+  .cs-socials a:hover { background: var(--coral); color: var(--olive-900); border-color: var(--coral); }
+  .cs-socials svg { width: 16px; height: 16px; }
+  .cs-peek {
+    font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
+    color: rgba(234,227,209,.5);
+    background: none; border: none; cursor: pointer;
+    padding: 8px 16px;
+    transition: color .3s var(--ease);
+  }
+  .cs-peek:hover { color: var(--coral); }
+
+  /* Section label helper */
+  .section-label {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-bottom: 16px;
+  }
+  .section-label::before {
+    content: ''; width: 28px; height: 1px; background: var(--coral-dk);
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ============ COMING SOON OVERLAY ============ -->
+<div class="coming-soon" id="comingSoon">
+  <div class="cs-inner">
+    <img src="assets/logo.jpg" alt="Victoria Badminton Centre" class="cs-logo" />
+    <div class="cs-eyebrow">Melbourne · Est. 2026</div>
+    <h1>Something <em>big</em><br>is coming.</h1>
+    <p class="cs-tagline">
+      36 world-class courts. One home for Melbourne's badminton community.
+      Victoria Badminton Centre opens its doors soon.
+    </p>
+
+    <div class="cs-countdown" id="countdown">
+      <div class="cs-unit"><span class="val" id="cdDays">00</span><span class="lbl">Days</span></div>
+      <div class="cs-unit"><span class="val" id="cdHours">00</span><span class="lbl">Hours</span></div>
+      <div class="cs-unit"><span class="val" id="cdMins">00</span><span class="lbl">Mins</span></div>
+      <div class="cs-unit"><span class="val" id="cdSecs">00</span><span class="lbl">Secs</span></div>
+    </div>
+
+    <form class="cs-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ On the list';">
+      <input type="email" placeholder="your@email.com — be first to know" required />
+      <button type="submit">Notify Me</button>
+    </form>
+
+    <div class="cs-socials">
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4 1 .5.4.8.8 1 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-1 1.4-.4.5-.8.8-1.4 1-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-1-.5-.4-.8-.8-1-1.4-.2-.4-.4-1-.4-2.2-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 1-1.4.4-.5.8-.8 1.4-1 .4-.2 1-.4 2.2-.4 1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 5.8.1 5 .3 4.2.6c-.8.3-1.5.7-2.2 1.4C1.3 2.7.9 3.4.6 4.2.3 5 .1 5.8.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.2 2.1.5 2.9.3.8.7 1.5 1.4 2.2.7.7 1.4 1.1 2.2 1.4.8.3 1.6.5 2.9.5 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c1.3-.1 2.1-.2 2.9-.5.8-.3 1.5-.7 2.2-1.4.7-.7 1.1-1.4 1.4-2.2.3-.8.5-1.6.5-2.9.1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.1-1.3-.2-2.1-.5-2.9-.3-.8-.7-1.5-1.4-2.2C21.3 1.3 20.6.9 19.8.6 19 .3 18.2.1 16.9.1 15.7 0 15.3 0 12 0zm0 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2S15.4 5.8 12 5.8zM12 16c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm6.4-11.8c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4z"/></svg></a>
+      <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.7 0H1.3C.6 0 0 .6 0 1.3v21.3C0 23.4.6 24 1.3 24h11.5v-9.3h-3.1v-3.6h3.1V8.4c0-3.1 1.9-4.8 4.7-4.8 1.3 0 2.5.1 2.8.1v3.3h-1.9c-1.5 0-1.8.7-1.8 1.8v2.3h3.6l-.5 3.6h-3.1V24h6.1c.7 0 1.3-.6 1.3-1.3V1.3C24 .6 23.4 0 22.7 0z"/></svg></a>
+      <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.3c-1.3-.8-2.2-2.2-2.4-3.8V2h-3.2v12.9c0 1.5-1.2 2.8-2.8 2.8-1.5 0-2.8-1.2-2.8-2.8s1.2-2.8 2.8-2.8c.3 0 .6 0 .9.1V8.9c-.3 0-.6-.1-.9-.1-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6V8.4c1.3.9 2.9 1.4 4.6 1.4V6.6c-.9 0-1.7-.1-2.2-.3z"/></svg></a>
+      <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1.1 1-1.1 2.5 1.1 2.9 1.3 3.1c.2.2 2.2 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.3c1.5.8 3.3 1.3 5.2 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg></a>
+    </div>
+
+    <button class="cs-peek" onclick="document.getElementById('comingSoon').classList.add('hidden')">
+      Preview the site →
+    </button>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="top">
+  <div class="container row">
+    <a href="#" class="brand">
+      <img src="assets/logo.jpg" alt="Victoria Badminton Centre" />
+      <div class="brand-text">
+        <div class="l1">Victoria</div>
+        <div class="l2">Badminton Centre</div>
+      </div>
+    </a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#courts">Courts</a></li>
+      <li><a href="#gallery">Facilities</a></li>
+      <li><a href="#hours">Hours</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a href="#book" class="btn-book">
+      Book a Court <span class="arrow">→</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-vert">VIC · BADMINTON · EST. 2026</div>
+  <div class="container hero-content">
+    <div>
+      <div class="eyebrow" style="color: var(--coral); margin-bottom: 32px;">
+        ◎ &nbsp; Melbourne's Largest Badminton Centre
+      </div>
+      <h1>
+        <span class="line"><span>Where</span></span>
+        <span class="line"><span>Smashes</span></span>
+        <span class="line"><span>Soar.</span></span>
+      </h1>
+    </div>
+    <div class="hero-meta">
+      <p class="lede">
+        Thirty-six championship-grade courts. One unrivaled home for every player —
+        from first-time swing to national-level rally.
+      </p>
+      <div class="hero-cta">
+        <a href="#book" class="btn-hero-primary">Book a Court →</a>
+        <a href="#about" class="btn-hero-secondary">Our Story</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    Scroll<div class="line"></div>
+  </div>
+</header>
+
+<!-- ============ STATS ============ -->
+<section class="stats" id="courts">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat feature">
+        <div class="num">36<sup>courts</sup></div>
+        <div class="label">Championship-grade courts</div>
+      </div>
+      <div class="stat">
+        <div class="num">7<sup>days</sup></div>
+        <div class="label">Open every day of the week</div>
+      </div>
+      <div class="stat">
+        <div class="num">15<sup>hrs</sup></div>
+        <div class="label">Of daily play available</div>
+      </div>
+      <div class="stat">
+        <div class="num">∞</div>
+        <div class="label">Rallies waiting for you</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-imgs">
+        <img class="img-lg" src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=1000&q=80" alt="Badminton player in action" />
+        <img class="img-sm" src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=800&q=80&sat=-20&hue=10" alt="Shuttlecock detail" style="object-position: top;" />
+        <div class="badge">36<br>Courts<br>One Home</div>
+      </div>
+      <div class="about-text">
+        <div class="section-label"><span class="eyebrow">About the Centre</span></div>
+        <h2>A home for the <em>community</em>, built for the game.</h2>
+        <p>
+          Victoria Badminton Centre is Melbourne's most ambitious badminton facility —
+          a purpose-built venue designed around one simple belief: great badminton deserves great space.
+        </p>
+        <p>
+          From families picking up a racquet for the first time to elite players training for national competition,
+          our 36 courts, professional lighting, and sprung sports flooring create the conditions for your best game.
+        </p>
+        <div class="about-features">
+          <div class="feat">
+            <div class="feat-title">Pro Lighting</div>
+            <div class="feat-desc">Shadow-free LED rigs tuned for shuttlecock clarity.</div>
+          </div>
+          <div class="feat">
+            <div class="feat-title">Sprung Flooring</div>
+            <div class="feat-desc">BWF-approved surfaces for performance and joint care.</div>
+          </div>
+          <div class="feat">
+            <div class="feat-title">Coaching</div>
+            <div class="feat-desc">Accredited coaches, junior programs, adult clinics.</div>
+          </div>
+          <div class="feat">
+            <div class="feat-title">Pro Shop</div>
+            <div class="feat-desc">Stringing services and top-tier gear on-site.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="gallery-header">
+      <div>
+        <div class="section-label"><span class="eyebrow" style="color: var(--coral);">The Facility</span></div>
+        <h2>Stepping <em>inside</em>.</h2>
+      </div>
+      <p>Every corner designed for the rally. Every court ready for your best shot.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-item g1">
+        <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=1200&q=80" alt="Badminton court" />
+        <div class="g-label">Centre Court</div>
+      </div>
+      <div class="g-item g2">
+        <img src="https://images.unsplash.com/photo-1613918431703-aa50889e3be7?auto=format&fit=crop&w=900&q=80" alt="Badminton rally" />
+        <div class="g-label">Main Hall</div>
+      </div>
+      <div class="g-item g3">
+        <img src="https://images.unsplash.com/photo-1521537634581-0dced2fee2ef?auto=format&fit=crop&w=800&q=80" alt="Shuttlecock" />
+        <div class="g-label">The Shuttle</div>
+      </div>
+      <div class="g-item g4">
+        <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=800&q=80" alt="Player" />
+        <div class="g-label">In Play</div>
+      </div>
+      <div class="g-item g5">
+        <img src="https://images.unsplash.com/photo-1599474924187-334a4ae5bd3c?auto=format&fit=crop&w=900&q=80" alt="Training" />
+        <div class="g-label">Training Zone</div>
+      </div>
+      <div class="g-item g6">
+        <img src="https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?auto=format&fit=crop&w=1200&q=80" alt="Match" />
+        <div class="g-label">Match Night</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOURS + MAP ============ -->
+<section class="info" id="hours">
+  <div class="container">
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>Opening Hours</h3>
+        <div class="sub">Open 7 days — book ahead to secure your court.</div>
+        <ul class="hours-list">
+          <li><span class="day">Monday</span><span class="time">7:00 AM – 11:00 PM</span></li>
+          <li><span class="day">Tuesday</span><span class="time">7:00 AM – 11:00 PM</span></li>
+          <li><span class="day">Wednesday</span><span class="time">7:00 AM – 11:00 PM</span></li>
+          <li><span class="day">Thursday</span><span class="time">7:00 AM – 11:00 PM</span></li>
+          <li><span class="day">Friday</span><span class="time">7:00 AM – 12:00 AM</span></li>
+          <li><span class="day">Saturday</span><span class="time">6:00 AM – 12:00 AM</span></li>
+          <li><span class="day">Sunday</span><span class="time">6:00 AM – 11:00 PM</span></li>
+        </ul>
+        <div class="note">
+          Public holidays may affect hours. Peak slots book out fast — we recommend reserving your court online.
+        </div>
+      </div>
+
+      <div class="map-wrap" id="visit">
+        <div class="address-block">
+          <div class="section-label"><span class="eyebrow">Find Us</span></div>
+          <h3>Victoria Badminton Centre</h3>
+          <p>123 Example Street, Melbourne, Victoria 3000 — <em>update with real address</em></p>
+        </div>
+        <div class="map-frame">
+          <!-- Replace the src below with your exact Google Maps embed once the address is confirmed -->
+          <iframe
+            src="https://www.google.com/maps?q=Melbourne+Sports+and+Aquatic+Centre&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Victoria Badminton Centre map"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARTNERS ============ -->
+<section class="partners">
+  <div class="container">
+    <div class="partners-header">
+      <div class="section-label" style="justify-content: center;"><span class="eyebrow">Proud Partners</span></div>
+      <h2>Backed by the <em>best</em> in the sport.</h2>
+    </div>
+    <div class="partners-row">
+      <div class="partner">
+        <div class="logo-box yonex">YONEX</div>
+        <div class="partner-label">Official Equipment</div>
+      </div>
+      <div class="partner">
+        <div class="logo-box victor">VICTOR</div>
+        <div class="partner-label">Official Gear</div>
+      </div>
+      <div class="partner">
+        <div class="partner-placeholder">YOUR BRAND</div>
+        <div class="partner-label">Partner with us</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOK CTA ============ -->
+<section class="book-cta" id="book">
+  <div class="container">
+    <h2>Ready to <em>play</em>?</h2>
+    <p>Reserve one of our 36 courts in under a minute. Peak hours move fast — so should you.</p>
+    <a href="#" class="btn-giant" onclick="alert('Booking system coming soon — stay tuned!'); return false;">
+      Book a Court Now →
+    </a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/logo.jpg" alt="Victoria Badminton Centre" />
+          <div class="display">Victoria Badminton</div>
+        </div>
+        <p class="tagline">Melbourne's home of badminton — 36 courts, one community, every level welcome.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4 1 .5.4.8.8 1 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-1 1.4-.4.5-.8.8-1.4 1-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-1-.5-.4-.8-.8-1-1.4-.2-.4-.4-1-.4-2.2-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 1-1.4.4-.5.8-.8 1.4-1 .4-.2 1-.4 2.2-.4 1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 5.8.1 5 .3 4.2.6c-.8.3-1.5.7-2.2 1.4C1.3 2.7.9 3.4.6 4.2.3 5 .1 5.8.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.2 2.1.5 2.9.3.8.7 1.5 1.4 2.2.7.7 1.4 1.1 2.2 1.4.8.3 1.6.5 2.9.5 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c1.3-.1 2.1-.2 2.9-.5.8-.3 1.5-.7 2.2-1.4.7-.7 1.1-1.4 1.4-2.2.3-.8.5-1.6.5-2.9.1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.1-1.3-.2-2.1-.5-2.9-.3-.8-.7-1.5-1.4-2.2C21.3 1.3 20.6.9 19.8.6 19 .3 18.2.1 16.9.1 15.7 0 15.3 0 12 0zm0 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2S15.4 5.8 12 5.8zM12 16c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm6.4-11.8c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.7 0H1.3C.6 0 0 .6 0 1.3v21.3C0 23.4.6 24 1.3 24h11.5v-9.3h-3.1v-3.6h3.1V8.4c0-3.1 1.9-4.8 4.7-4.8 1.3 0 2.5.1 2.8.1v3.3h-1.9c-1.5 0-1.8.7-1.8 1.8v2.3h3.6l-.5 3.6h-3.1V24h6.1c.7 0 1.3-.6 1.3-1.3V1.3C24 .6 23.4 0 22.7 0z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.3c-1.3-.8-2.2-2.2-2.4-3.8V2h-3.2v12.9c0 1.5-1.2 2.8-2.8 2.8-1.5 0-2.8-1.2-2.8-2.8s1.2-2.8 2.8-2.8c.3 0 .6 0 .9.1V8.9c-.3 0-.6-.1-.9-.1-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6V8.4c1.3.9 2.9 1.4 4.6 1.4V6.6c-.9 0-1.7-.1-2.2-.3z"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1.1 1-1.1 2.5 1.1 2.9 1.3 3.1c.2.2 2.2 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.3c1.5.8 3.3 1.3 5.2 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2c-.3-1-1.1-1.8-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5C1.6 4.4.8 5.2.5 6.2 0 8.1 0 12 0 12s0 3.9.5 5.8c.3 1 1.1 1.8 2.1 2.1 1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4L15.8 12l-6.2 3.6z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#courts">Our Courts</a></li>
+          <li><a href="#hours">Hours</a></li>
+          <li><a href="#visit">Location</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Play</h4>
+        <ul>
+          <li><a href="#book">Book a Court</a></li>
+          <li><a href="#">Coaching</a></li>
+          <li><a href="#">Tournaments</a></li>
+          <li><a href="#">Memberships</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>123 Example Street<br>Melbourne, VIC 3000</p>
+        <p>info@victoriabadminton.com.au</p>
+        <p>(03) 0000 0000</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Victoria Badminton Centre · All rights reserved</div>
+      <div>Made in Melbourne 🏸</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Countdown — set to 90 days from today as a placeholder */
+  (function() {
+    const launch = new Date();
+    launch.setDate(launch.getDate() + 90);
+    launch.setHours(10, 0, 0, 0);
+
+    const d = document.getElementById('cdDays');
+    const h = document.getElementById('cdHours');
+    const m = document.getElementById('cdMins');
+    const s = document.getElementById('cdSecs');
+
+    function pad(n) { return String(Math.max(0,n)).padStart(2,'0'); }
+
+    function tick() {
+      const now = new Date();
+      const diff = Math.max(0, launch - now);
+      const days = Math.floor(diff / 86400000);
+      const hrs  = Math.floor((diff % 86400000) / 3600000);
+      const mins = Math.floor((diff % 3600000) / 60000);
+      const secs = Math.floor((diff % 60000) / 1000);
+      if (d) d.textContent = pad(days);
+      if (h) h.textContent = pad(hrs);
+      if (m) m.textContent = pad(mins);
+      if (s) s.textContent = pad(secs);
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  /* Nav shrink on scroll */
+  const nav = document.querySelector('nav.top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) nav.style.padding = '10px 0';
+    else nav.style.padding = '18px 0';
+  });
+</script>
+
+</body>
+</html>
