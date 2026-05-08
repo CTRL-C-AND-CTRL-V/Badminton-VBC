@@ -124,16 +124,25 @@
     width: 5px; height: 5px; border-radius: 50%;
     background: var(--olive-900); opacity: .5; flex-shrink: 0;
   }
+  .runner::after {
+    content: '';
+    position: absolute; right: 0; top: 0; bottom: 0;
+    width: 64px;
+    background: linear-gradient(to right, transparent, var(--coral) 45%);
+    pointer-events: none;
+    z-index: 1;
+  }
   .runner-close {
     position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
     z-index: 2;
-    background: rgba(42,51,20,.15); border: none; cursor: pointer;
+    background: var(--coral); border: none; cursor: pointer;
     width: 22px; height: 22px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     color: var(--olive-900); font-size: 13px; line-height: 1;
-    transition: background .2s;
+    box-shadow: 0 0 0 1px rgba(42,51,20,.18);
+    transition: background .2s, box-shadow .2s;
   }
-  .runner-close:hover { background: rgba(42,51,20,.3); }
+  .runner-close:hover { background: rgba(42,51,20,.85); color: var(--coral); box-shadow: none; }
   body.runner-hidden .runner { display: none; }
   body.runner-hidden nav.top { top: 0; }
   body.runner-hidden header.hero { padding-top: 120px; }
@@ -187,13 +196,19 @@
     transition: transform .4s var(--ease);
   }
   nav ul a:hover::after { transform: scaleX(1); transform-origin: left; }
+  .nav-btn-group {
+    display: flex; gap: 10px; align-items: center;
+    flex-shrink: 0;
+  }
   .btn-book {
     font-size: 13px; padding: 11px 18px 10px;
     white-space: nowrap; flex-shrink: 0;
+    justify-content: center;
   }
   .btn-shop {
     font-size: 13px; padding: 11px 16px 10px;
     white-space: nowrap; flex-shrink: 0;
+    justify-content: center;
   }
 
   /* Hamburger */
@@ -1267,18 +1282,21 @@
     background-size: cover; background-position: center;
     color: var(--cream);
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: clamp(40px, 8vh, 100px) clamp(24px, 6vw, 80px);
+    padding: clamp(20px, 4vh, 60px) clamp(24px, 6vw, 80px);
     text-align: center;
     opacity: calc(var(--coming-soon));
     pointer-events: auto;
     transition: opacity .6s var(--ease);
-    overflow: auto;
+    overflow: hidden;
   }
   .coming-soon.hidden { opacity: 0; pointer-events: none; }
+  /* Lock body scroll while the overlay is visible */
+  html:has(.coming-soon:not(.hidden)) { overflow: hidden; }
+  html:has(.coming-soon:not(.hidden)) body { overflow: hidden; }
   .cs-inner { max-width: 720px; width: 100%; animation: fade 1s var(--ease) both; }
   .cs-logo {
-    width: 140px; height: 140px; border-radius: 50%;
-    margin: 0 auto clamp(24px, 4vh, 48px);
+    width: clamp(88px, 13vh, 130px); height: clamp(88px, 13vh, 130px); border-radius: 50%;
+    margin: 0 auto clamp(14px, 2.4vh, 28px);
     box-shadow: 0 10px 40px rgba(0,0,0,.3);
     animation: float 4s ease-in-out infinite;
   }
@@ -1286,13 +1304,13 @@
   .cs-eyebrow {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 14px; letter-spacing: .5em;
-    color: var(--coral); margin-bottom: 20px;
+    color: var(--coral); margin-bottom: clamp(8px, 1.5vh, 18px);
   }
   .coming-soon h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(56px, 11vw, 140px);
+    font-size: clamp(44px, 8.5vw, 110px);
     line-height: .9;
-    margin: 0 0 12px;
+    margin: 0 0 10px;
     letter-spacing: .01em;
   }
   .coming-soon h1 em {
@@ -1300,26 +1318,26 @@
     color: var(--coral); letter-spacing: -.02em;
   }
   .coming-soon .cs-tagline {
-    font-family: 'Fraunces', serif; font-size: 19px; font-weight: 300;
-    max-width: 44ch; margin: 0 auto clamp(32px, 5vh, 60px);
-    color: var(--bone); line-height: 1.6;
+    font-family: 'Fraunces', serif; font-size: clamp(15px, 1.7vw, 18px); font-weight: 300;
+    max-width: 44ch; margin: 0 auto clamp(18px, 3vh, 40px);
+    color: var(--bone); line-height: 1.55;
   }
   .cs-countdown {
-    display: flex; justify-content: center; gap: clamp(16px, 4vw, 36px);
-    margin-bottom: 56px; flex-wrap: wrap;
+    display: flex; justify-content: center; gap: clamp(14px, 3vw, 32px);
+    margin-bottom: clamp(20px, 3.5vh, 40px); flex-wrap: wrap;
   }
   .cs-unit {
-    min-width: 80px;
+    min-width: 72px;
   }
   .cs-unit .val {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(48px, 7vw, 72px);
+    font-size: clamp(38px, 5.5vw, 60px);
     color: var(--coral); line-height: 1;
     display: block;
   }
   .cs-unit .lbl {
     font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
-    color: var(--bone); margin-top: 6px; display: block;
+    color: var(--bone); margin-top: 4px; display: block;
   }
   .cs-form {
     display: flex; max-width: 480px; margin: 0 auto 24px;
@@ -1351,10 +1369,10 @@
   .cs-form button:hover { background: var(--cream); }
   .cs-socials {
     display: flex; justify-content: center; gap: 14px;
-    margin-bottom: 32px;
+    margin-bottom: clamp(14px, 2vh, 24px);
   }
   .cs-socials a {
-    width: 40px; height: 40px;
+    width: 38px; height: 38px;
     display: flex; align-items: center; justify-content: center;
     border: 1px solid rgba(244,239,227,.3);
     border-radius: 50%;
@@ -1364,10 +1382,11 @@
   .cs-socials a:hover { background: var(--coral); color: var(--olive-900); border-color: var(--coral); }
   .cs-socials svg { width: 16px; height: 16px; }
   .cs-peek {
-    font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
-    color: rgba(234,227,209,.5);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase;
+    color: rgba(234,227,209,.75);
     background: none; border: none; cursor: pointer;
-    padding: 8px 16px;
+    padding: 10px 18px;
     transition: color .3s var(--ease);
   }
   .cs-peek:hover { color: var(--coral); }
@@ -1584,9 +1603,9 @@
       <li><a href="#hours">Hours</a></li>
       <li><a href="#visit">Visit</a></li>
     </ul>
-    <div class="nav-btn-group" style="display:flex; gap:10px; align-items:center;">
-      <a href="#shop" class="btn-shop" style="justify-content:center; min-width:120px; white-space:nowrap;">Shop</a>
-      <a href="#book" class="btn-book" style="justify-content:center; min-width:148px; white-space:nowrap;">
+    <div class="nav-btn-group">
+      <a href="#shop" class="btn-shop">Shop</a>
+      <a href="#book" class="btn-book">
         Book a Court <span class="arrow">→</span>
       </a>
     </div>
@@ -1884,16 +1903,16 @@
         <div class="g-label">Centre Court</div>
       </div>
       <div class="g-item g2">
-        <img src="https://images.unsplash.com/photo-1613918431703-aa50889e3be7?auto=format&fit=crop&w=900&q=80" alt="Badminton rally" />
-        <div class="g-label">Main Hall</div>
+        <img src="https://images.unsplash.com/photo-1777382141976-1cf3373f5c16?fm=jpg&w=1600&q=80&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Man playing pickleball on a blue court" />
+        <div class="g-label">Pickleball Court</div>
       </div>
       <div class="g-item g3">
         <img src="https://images.unsplash.com/photo-1521537634581-0dced2fee2ef?auto=format&fit=crop&w=800&q=80" alt="Shuttlecock" />
         <div class="g-label">The Shuttle</div>
       </div>
       <div class="g-item g4">
-        <img src="https://images.unsplash.com/photo-1657314899575-1ae65ec2a5a1?auto=format&fit=crop&w=800&q=80" alt="Pickleball" />
-        <div class="g-label">Pickleball</div>
+        <img src="https://images.unsplash.com/photo-1724941407869-f8fb46a3cc38?auto=format&fit=crop&w=1200&q=80" alt="Player on court holding a racquet" />
+        <div class="g-label">On Court</div>
       </div>
       <div class="g-item g5">
         <img src="https://images.unsplash.com/photo-1599474924187-334a4ae5bd3c?auto=format&fit=crop&w=900&q=80" alt="Training" />
