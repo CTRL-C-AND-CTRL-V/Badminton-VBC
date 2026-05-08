@@ -228,6 +228,22 @@
   .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+  /* Right-side cluster for mobile (Book mini + hamburger) */
+  .nav-end { display: flex; align-items: center; gap: 10px; }
+  .nav-mobile-book {
+    display: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px; letter-spacing: .1em; line-height: 1;
+    background: var(--olive-800); color: var(--cream);
+    height: 40px; padding: 0 16px; border-radius: var(--radius);
+    border: 1px solid var(--olive-800);
+    white-space: nowrap; align-items: center; gap: 6px;
+    transition: all .3s var(--ease);
+  }
+  .nav-mobile-book:hover {
+    background: var(--coral); border-color: var(--coral); color: var(--olive-900);
+  }
+
   /* Mobile drawer */
   .nav-drawer {
     display: none;
@@ -272,17 +288,13 @@
     background: var(--olive-800); color: var(--cream); border: 1px solid var(--olive-800);
   }
 
-  /* Tablet: hide links, show hamburger + keep Book button only */
+  /* Tablet & mobile: hide nav links + full button group, show compact Book + hamburger */
   @media (max-width: 960px) {
     nav ul { display: none; }
     .nav-hamburger { display: flex; }
     .nav-drawer { display: flex; padding-top: 110px; }
-    .nav-btn-group .btn-shop { display: none; }
-    .nav-btn-group { gap: 8px; }
-  }
-  /* Mobile: hide Book button too, hamburger only */
-  @media (max-width: 480px) {
     .nav-btn-group { display: none; }
+    .nav-mobile-book { display: inline-flex; }
   }
 
   .btn-book {
@@ -1611,9 +1623,12 @@
         Book a Court <span class="arrow">→</span>
       </a>
     </div>
-    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-end">
+      <a href="#book" class="nav-mobile-book">Book →</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
