@@ -870,6 +870,133 @@
   }
   .map-frame iframe { width: 100%; height: 100%; border: 0; filter: saturate(.9); }
 
+  /* ——— CONTACT ——— */
+  section.contact {
+    padding: 130px 0;
+    background: var(--bone);
+  }
+  .contact-header { max-width: 60ch; margin-bottom: 56px; }
+  .contact-header .eyebrow { color: var(--coral-dk); }
+  .contact-header h2 {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 1.02; margin: 12px 0 18px;
+    color: var(--olive-900); letter-spacing: -.02em;
+  }
+  .contact-header h2 em {
+    font-style: italic; color: var(--coral-dk);
+  }
+  .contact-header p {
+    margin: 0; font-size: 17px; line-height: 1.6; color: var(--olive-700);
+    max-width: 52ch;
+  }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1.15fr; gap: 60px; align-items: start;
+  }
+  .contact-methods { display: flex; flex-direction: column; gap: 14px; }
+  .contact-method {
+    display: flex; gap: 18px; align-items: flex-start;
+    background: var(--cream);
+    padding: 24px 26px; border-radius: var(--radius);
+    border: 1px solid rgba(42,51,20,.12);
+    transition: all .3s var(--ease);
+  }
+  a.contact-method:hover {
+    border-color: var(--coral);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .contact-method .icon {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    background: rgba(232,147,107,.18);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--coral-dk);
+  }
+  .contact-method .icon svg { width: 20px; height: 20px; }
+  .contact-method .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--olive-700);
+    margin-bottom: 6px;
+  }
+  .contact-method .value {
+    font-family: 'Fraunces', serif; font-size: 19px; font-weight: 400;
+    color: var(--olive-900); line-height: 1.35;
+  }
+  .contact-method .hint {
+    font-size: 13px; color: var(--olive-700); margin-top: 6px; line-height: 1.5;
+  }
+
+  .contact-form {
+    background: var(--olive-800); color: var(--cream);
+    padding: 44px 42px; border-radius: var(--radius);
+    position: relative; overflow: hidden;
+  }
+  .contact-form::before {
+    content: ''; position: absolute; top: -40px; right: -40px;
+    width: 180px; height: 180px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,147,107,.25), transparent 70%);
+  }
+  .contact-form h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px; letter-spacing: .02em; margin: 0 0 6px;
+    position: relative;
+  }
+  .contact-form .sub {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+    font-size: 16px; color: var(--coral); margin-bottom: 30px;
+    position: relative;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; position: relative; }
+  .field label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: .18em;
+    text-transform: uppercase; color: rgba(244,239,227,.75);
+  }
+  .field input, .field select, .field textarea {
+    font-family: 'Inter', sans-serif; font-size: 15px;
+    background: rgba(244,239,227,.08);
+    border: 1px solid rgba(244,239,227,.22);
+    border-radius: 10px; padding: 13px 15px;
+    color: var(--cream); width: 100%;
+    transition: border-color .25s var(--ease), background .25s var(--ease);
+  }
+  .field textarea { resize: vertical; min-height: 118px; }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(244,239,227,.4); }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: none; border-color: var(--coral);
+    background: rgba(244,239,227,.13);
+  }
+  .field select option { background: var(--olive-800); color: var(--cream); }
+  .btn-submit {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px; letter-spacing: .14em;
+    background: var(--coral); color: var(--olive-900);
+    padding: 17px 40px 14px; border-radius: var(--radius);
+    border: none; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 12px;
+    transition: all .3s var(--ease); margin-top: 8px;
+  }
+  .btn-submit:hover { background: var(--cream); transform: translateY(-2px); }
+  .form-note {
+    font-size: 13px; color: rgba(244,239,227,.6);
+    margin: 18px 0 0; line-height: 1.5; position: relative;
+  }
+  .form-status {
+    margin-top: 16px; font-size: 14px; color: var(--coral);
+    position: relative; display: none;
+  }
+  .form-status.show { display: block; }
+
+  @media (max-width: 900px) {
+    section.contact { padding: 90px 0; }
+    .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+    .contact-header { margin-bottom: 40px; }
+    .contact-form { padding: 34px 26px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+  }
+
   /* ——— PARTNERS ——— */
   section.partners {
     padding: 100px 0;
@@ -1616,6 +1743,7 @@
       <li><a href="#gallery">Facilities</a></li>
       <li><a href="#hours">Hours</a></li>
       <li><a href="#visit">Visit</a></li>
+      <li><a href="#contact">Contact Us</a></li>
     </ul>
     <div class="nav-btn-group">
       <a href="#shop" class="btn-shop">Shop</a>
@@ -1640,6 +1768,7 @@
     <li><a href="#gallery" class="drawer-link">Facilities</a></li>
     <li><a href="#hours" class="drawer-link">Hours</a></li>
     <li><a href="#visit" class="drawer-link">Visit</a></li>
+    <li><a href="#contact" class="drawer-link">Contact Us</a></li>
   </ul>
   <div class="nav-drawer-btns">
     <a href="#shop" class="drawer-shop drawer-link">Shop</a>
@@ -1964,12 +2093,11 @@
         <div class="address-block">
           <div class="section-label"><span class="eyebrow">Find Us</span></div>
           <h3>Victoria Badminton Centre</h3>
-          <p>123 Example Street, Melbourne, Victoria 3000 — <em>update with real address</em></p>
+          <p>63 Sunshine Road, West Footscray, Victoria 3012</p>
         </div>
         <div class="map-frame">
-          <!-- Replace the src below with your exact Google Maps embed once the address is confirmed -->
           <iframe
-            src="https://www.google.com/maps?q=Melbourne+Sports+and+Aquatic+Centre&output=embed"
+            src="https://www.google.com/maps?q=63+Sunshine+Road,+West+Footscray+VIC+3012&output=embed"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title="Victoria Badminton Centre map"
@@ -1977,6 +2105,106 @@
           </iframe>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-header">
+      <div class="section-label"><span class="eyebrow">Get In Touch</span></div>
+      <h2>Questions? <em>Talk to us.</em></h2>
+      <p>Court bookings, coaching, corporate events or partnerships — our team is on the floor seven days a week and happy to help.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-methods">
+        <a class="contact-method" href="mailto:info@victoriabadminton.com.au">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="label">Email</div>
+            <div class="value">info@victoriabadminton.com.au</div>
+            <div class="hint">We reply within one business day.</div>
+          </div>
+        </a>
+
+        <a class="contact-method" href="tel:+61300000000">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          </div>
+          <div>
+            <div class="label">Phone</div>
+            <div class="value">(03) 0000 0000</div>
+            <div class="hint">Open 7 days — see our opening hours above.</div>
+          </div>
+        </a>
+
+        <a class="contact-method" href="https://www.google.com/maps/dir/?api=1&destination=63+Sunshine+Road,+West+Footscray+VIC+3012" target="_blank" rel="noopener">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="label">Visit Us</div>
+            <div class="value">63 Sunshine Road<br>West Footscray, VIC 3012</div>
+            <div class="hint">Free on-site parking. Get directions →</div>
+          </div>
+        </a>
+
+        <div class="contact-method">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.9-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 4 11.5a8.4 8.4 0 0 1 8.5-8.4h.5a8.4 8.4 0 0 1 8 8.4z"/></svg>
+          </div>
+          <div>
+            <div class="label">Social</div>
+            <div class="value">@victoriabadminton</div>
+            <div class="hint">Follow along for events, socials and court updates.</div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <h3>Send us a message</h3>
+        <div class="sub">We'll get back to you shortly.</div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="cfName">Name</label>
+            <input type="text" id="cfName" name="name" placeholder="Your name" required />
+          </div>
+          <div class="field">
+            <label for="cfPhone">Phone</label>
+            <input type="tel" id="cfPhone" name="phone" placeholder="Optional" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="cfEmail">Email</label>
+          <input type="email" id="cfEmail" name="email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="field">
+          <label for="cfTopic">What's it about?</label>
+          <select id="cfTopic" name="topic">
+            <option>Court booking enquiry</option>
+            <option>Coaching &amp; lessons</option>
+            <option>Corporate &amp; group events</option>
+            <option>Partnerships &amp; sponsorship</option>
+            <option>Something else</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="cfMessage">Message</label>
+          <textarea id="cfMessage" name="message" placeholder="Tell us how we can help…" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Send Message <span class="arrow">→</span></button>
+        <p class="form-note">Prefer email? Reach us any time at info@victoriabadminton.com.au</p>
+        <p class="form-status" id="cfStatus" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </div>
 </section>
@@ -2229,6 +2457,7 @@
           <li><a href="#courts">Our Courts</a></li>
           <li><a href="#hours">Hours</a></li>
           <li><a href="#visit">Location</a></li>
+          <li><a href="#contact">Contact Us</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -2238,14 +2467,14 @@
           <li><a href="#shop">Shop</a></li>
           <li><a href="#">Coaching</a></li>
           <li><a href="#">Tournaments</a></li>
-          <li><a href="#">Memberships</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
-        <p>123 Example Street<br>Melbourne, VIC 3000</p>
-        <p>info@victoriabadminton.com.au</p>
-        <p>(03) 0000 0000</p>
+        <p>63 Sunshine Road<br>West Footscray, VIC 3012</p>
+        <p><a href="mailto:info@victoriabadminton.com.au">info@victoriabadminton.com.au</a></p>
+        <p><a href="tel:+61300000000">(03) 0000 0000</a></p>
+        <p><a href="#contact">Send us a message →</a></p>
       </div>
     </div>
     <div class="footer-bottom">
@@ -2361,6 +2590,45 @@
 
     window.addEventListener('resize', () => {
       if (window.innerWidth > 960) closeDrawer();
+    });
+  })();
+
+  /* Contact form — no backend yet, so hand off to the mail client */
+  (function() {
+    const form   = document.getElementById('contactForm');
+    const status = document.getElementById('cfStatus');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name    = form.name.value.trim();
+      const email   = form.email.value.trim();
+      const phone   = form.phone.value.trim();
+      const topic   = form.topic.value;
+      const message = form.message.value.trim();
+
+      if (!name || !email || !message) {
+        status.textContent = 'Please fill in your name, email and message.';
+        status.classList.add('show');
+        return;
+      }
+
+      const body = [
+        'Name: ' + name,
+        'Email: ' + email,
+        phone ? 'Phone: ' + phone : null,
+        'Topic: ' + topic,
+        '',
+        message
+      ].filter(Boolean).join('\n');
+
+      window.location.href = 'mailto:info@victoriabadminton.com.au'
+        + '?subject=' + encodeURIComponent('[Website] ' + topic + ' — ' + name)
+        + '&body=' + encodeURIComponent(body);
+
+      status.textContent = 'Opening your email app… if nothing happens, email us directly at info@victoriabadminton.com.au';
+      status.classList.add('show');
     });
   })();
 </script>
