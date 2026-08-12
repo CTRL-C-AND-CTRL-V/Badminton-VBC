@@ -1443,15 +1443,7 @@
     transform: translateY(-4px);
   }
   .test-card-top {
-    display: flex; justify-content: space-between; align-items: flex-start;
-  }
-  .test-avatar {
-    width: 44px; height: 44px; border-radius: 50%;
-    background: var(--olive-800);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px; color: var(--cream); letter-spacing: .05em;
-    flex-shrink: 0;
+    display: flex; justify-content: flex-start; align-items: center;
   }
   .test-card-stars { display: flex; gap: 3px; }
   .test-card-stars svg { width: 14px; height: 14px; fill: var(--gold); }
@@ -1582,16 +1574,19 @@
 
   /* Built-by credit — sits inline at the end of the footer baseline */
   .built-by {
-    display: inline-flex; align-items: center; gap: 9px;
-    font-size: 11px; letter-spacing: .12em;
-    color: rgba(234,227,209,.38);
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 12px; letter-spacing: .12em;
+    color: rgba(234,227,209,.45);
     transition: color .3s var(--ease);
     white-space: nowrap;
   }
   .built-by:hover { color: var(--cream); }
   .flexispace-logo {
-    height: 16px; width: auto; display: block; flex-shrink: 0;
+    height: 26px; width: auto; display: block; flex-shrink: 0;
     position: relative; top: -1px;
+  }
+  @media (max-width: 600px) {
+    .flexispace-logo { height: 22px; }
   }
 
   /* ——— COMING SOON OVERLAY ——— */
@@ -2486,7 +2481,7 @@
 
     <div class="test-summary">
       <div class="test-score">
-        <div class="big">4.9</div>
+        <div class="big">5.0</div>
         <div class="stars">
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -2494,14 +2489,14 @@
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <div class="count">Based on 200+ reviews</div>
+        <div class="count">Based on 50+ Google reviews</div>
       </div>
       <div class="test-divider"></div>
       <div class="test-breakdown">
-        <div class="test-bar-row"><span>5</span><div class="test-bar-track"><div class="test-bar-fill" style="width:88%"></div></div></div>
-        <div class="test-bar-row"><span>4</span><div class="test-bar-track"><div class="test-bar-fill" style="width:9%"></div></div></div>
-        <div class="test-bar-row"><span>3</span><div class="test-bar-track"><div class="test-bar-fill" style="width:2%"></div></div></div>
-        <div class="test-bar-row"><span>2</span><div class="test-bar-track"><div class="test-bar-fill" style="width:1%"></div></div></div>
+        <div class="test-bar-row"><span>5</span><div class="test-bar-track"><div class="test-bar-fill" style="width:100%"></div></div></div>
+        <div class="test-bar-row"><span>4</span><div class="test-bar-track"><div class="test-bar-fill" style="width:0%"></div></div></div>
+        <div class="test-bar-row"><span>3</span><div class="test-bar-track"><div class="test-bar-fill" style="width:0%"></div></div></div>
+        <div class="test-bar-row"><span>2</span><div class="test-bar-track"><div class="test-bar-fill" style="width:0%"></div></div></div>
         <div class="test-bar-row"><span>1</span><div class="test-bar-track"><div class="test-bar-fill" style="width:0%"></div></div></div>
       </div>
     </div>
@@ -2510,7 +2505,6 @@
 
       <div class="test-card">
         <div class="test-card-top">
-          <div class="test-avatar">JL</div>
           <div class="test-card-stars">
             <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -2519,11 +2513,11 @@
             <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
         </div>
-        <p class="test-quote">The courts are immaculate — best lighting I've played under in Melbourne. The SVIP courts are something else entirely. Worth every cent for a serious session.</p>
+        <p class="test-quote">Super spacious and well invested. Manager (Lance) is very friendly and accommodating. Floorboards and mats are very good quality and does not cause any knee pain for someone with a knee injury like myself. Highly recommend anyone to come here to have a few hits and have fun 🤩 by far the best badminton/pickleball courts in the West</p>
         <div class="test-card-footer">
           <div>
-            <div class="test-name">Jason L.</div>
-            <div class="test-meta">Competitive player · Badminton</div>
+            <div class="test-name">Jose Yu</div>
+            <div class="test-meta">6 reviews · Google review</div>
           </div>
           <div class="test-google">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
@@ -2534,7 +2528,6 @@
 
       <div class="test-card">
         <div class="test-card-top">
-          <div class="test-avatar" style="background:var(--coral-dk);">SM</div>
           <div class="test-card-stars">
             <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -2543,11 +2536,11 @@
             <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
         </div>
-        <p class="test-quote">Brought my kids here for the first time and they're hooked. The junior coaching staff are incredibly patient and the facilities are spotless. We'll be regulars for sure.</p>
+        <p class="test-quote">We hosted our badminton social here tonight and had a fantastic experience. The centre is bright, spacious, and very well lit, and the excellent lighting made a real difference during play. There is plenty of parking available, and the location is very convenient, being close to the CBD. Overall, it's a great venue. We will definitely be back and highly recommend it to anyone looking for a quality place to play. Thanks, Lance, for being so accommodating.</p>
         <div class="test-card-footer">
           <div>
-            <div class="test-name">Sarah M.</div>
-            <div class="test-meta">Parent · Junior programs</div>
+            <div class="test-name">Chile Photography</div>
+            <div class="test-meta">5 reviews · Google review</div>
           </div>
           <div class="test-google">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
@@ -2558,7 +2551,6 @@
 
       <div class="test-card">
         <div class="test-card-top">
-          <div class="test-avatar" style="background:var(--olive-600);">DK</div>
           <div class="test-card-stars">
             <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -2567,83 +2559,11 @@
             <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
         </div>
-        <p class="test-quote">As a pickleball player I was worried we'd feel like an afterthought — not at all. The 8 dedicated courts are top quality and the atmosphere is brilliant. Great to see both sports under one roof.</p>
+        <p class="test-quote">Best badminton court in Melbourne!</p>
         <div class="test-card-footer">
           <div>
-            <div class="test-name">David K.</div>
-            <div class="test-meta">Regular · Pickleball</div>
-          </div>
-          <div class="test-google">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-            Google
-          </div>
-        </div>
-      </div>
-
-      <div class="test-card">
-        <div class="test-card-top">
-          <div class="test-avatar" style="background:var(--gold); color:var(--olive-900);">AT</div>
-          <div class="test-card-stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-        </div>
-        <p class="test-quote">Booked an SVIP court for a corporate event and the team went above and beyond. Private, premium, and professional. Exactly what we needed. Highly recommend for group bookings.</p>
-        <div class="test-card-footer">
-          <div>
-            <div class="test-name">Amanda T.</div>
-            <div class="test-meta">Corporate booking · SVIP</div>
-          </div>
-          <div class="test-google">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-            Google
-          </div>
-        </div>
-      </div>
-
-      <div class="test-card">
-        <div class="test-card-top">
-          <div class="test-avatar" style="background:#5c6d33;">RN</div>
-          <div class="test-card-stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-        </div>
-        <p class="test-quote">Came in as a complete beginner and left with a smile. The staff pointed me to the right group session, the stringing service sorted my racquet on the spot. Already booked again.</p>
-        <div class="test-card-footer">
-          <div>
-            <div class="test-name">Rachel N.</div>
-            <div class="test-meta">Beginner · Drop-in session</div>
-          </div>
-          <div class="test-google">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-            Google
-          </div>
-        </div>
-      </div>
-
-      <div class="test-card">
-        <div class="test-card-top">
-          <div class="test-avatar" style="background:var(--coral);">WC</div>
-          <div class="test-card-stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-        </div>
-        <p class="test-quote">The sprung flooring is a game changer for my joints. I've played at a dozen venues across Melbourne and nothing comes close to the court quality here. This is the real deal.</p>
-        <div class="test-card-footer">
-          <div>
-            <div class="test-name">Wei C.</div>
-            <div class="test-meta">Veteran player · Badminton</div>
+            <div class="test-name">Xichao Zhang</div>
+            <div class="test-meta">Local Guide · 15 reviews</div>
           </div>
           <div class="test-google">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
@@ -2705,7 +2625,7 @@
     <div class="footer-bottom">
       <div>© 2026 Victoria Badminton Centre · All rights reserved</div>
       <a class="built-by" href="https://flexispace.com.au" target="_blank" rel="noopener">
-        <span>Power by  </span>
+        <span>Power by</span>
         <svg class="flexispace-logo" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FlexiSpace">
           <path d="M7.1875 3.6001H2.8125C1.94956 3.6001 1.25 4.27167 1.25 5.1001V9.3001C1.25 10.1285 1.94956 10.8001 2.8125 10.8001H7.1875C8.05045 10.8001 8.75 10.1285 8.75 9.3001V5.1001C8.75 4.27167 8.05045 3.6001 7.1875 3.6001Z" fill="currentColor"/>
           <path d="M17.1875 3.6001H12.8125C11.9496 3.6001 11.25 4.27167 11.25 5.1001V9.3001C11.25 10.1285 11.9496 10.8001 12.8125 10.8001H17.1875C18.0504 10.8001 18.75 10.1285 18.75 9.3001V5.1001C18.75 4.27167 18.0504 3.6001 17.1875 3.6001Z" fill="currentColor"/>
