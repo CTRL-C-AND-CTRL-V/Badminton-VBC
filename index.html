@@ -519,10 +519,8 @@
     .stat:nth-child(1), .stat:nth-child(2), .stat:nth-child(3) { border-bottom: 1px solid rgba(244,239,227,.12); padding-bottom: 28px; margin-bottom: 4px; }
   }
   @media (max-width: 640px) {
-    .stat:nth-child(even) { border-right: none; }
-    .stat:not(:nth-last-child(-n+2)) { border-bottom: 1px solid rgba(244,239,227,.12); padding-bottom: 24px; }
-    /* Odd card count — last tile spans both columns */
-    .stat:last-child:nth-child(odd) { grid-column: 1 / -1; border-right: none; }
+    /* Sport cards carry their own background, so inter-cell borders are noise */
+    .stat.sport-card { border-right: none; border-bottom: none; }
   }
   .stat .num {
     font-family: 'Bebas Neue', sans-serif;
@@ -607,7 +605,33 @@
   .stat.pick-2 .stat-sport { background: rgba(244,239,227,.2); color: var(--cream); }
   /* Gap between the two sport groups */
   .stat.group-start { margin-left: 10px; }
-  @media (max-width: 640px) { .stat.group-start { margin-left: 0; } }
+  /* Mobile: break the row at the sport boundary so badminton and pickleball
+     never share a row. Badminton = 3 cards (2 + 1 full-width),
+     Pickleball = 2 cards on their own row, separated by a labelled divider. */
+  .sport-divider {
+    display: none;
+    grid-column: 1 / -1;
+    align-items: center; gap: 12px;
+    margin: 14px 0 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px; font-weight: 700; letter-spacing: .24em;
+    text-transform: uppercase; color: rgba(244,239,227,.42);
+  }
+  .sport-divider::before, .sport-divider::after {
+    content: ''; height: 1px; background: rgba(244,239,227,.16);
+  }
+  .sport-divider::before { width: 18px; flex-shrink: 0; }
+  .sport-divider::after { flex: 1; }
+  .sport-divider.first { margin-top: 0; color: rgba(232,147,107,.85); }
+  .sport-divider.first::before, .sport-divider.first::after { background: rgba(232,147,107,.3); }
+  .sport-divider:not(.first) { color: rgba(111,174,159,.9); }
+  .sport-divider:not(.first)::before, .sport-divider:not(.first)::after { background: rgba(111,174,159,.32); }
+  @media (max-width: 640px) {
+    .stats-grid { gap: 8px; }
+    .stat.group-start { margin-left: 0; grid-column: 1; }
+    .stat.bad-3 { grid-column: 1 / -1; }
+    .sport-divider { display: flex; }
+  }
 
   /* ——— ANNOUNCEMENTS CAROUSEL ——— */
   section.announcements {
@@ -1533,6 +1557,47 @@
     box-shadow: 0 24px 50px -10px rgba(244,239,227,.4);
   }
 
+  /* ——— BOOKING DISABLED ———
+     Booking is not live yet. Add class "booking-disabled" to <body> to grey out
+     every booking control and stop it navigating.
+     TO GO LIVE: remove "booking-disabled" from the <body> tag — nothing else. */
+  body.booking-disabled .btn-book,
+  body.booking-disabled .nav-mobile-book,
+  body.booking-disabled .drawer-book,
+  body.booking-disabled .btn-hero-primary,
+  body.booking-disabled .btn-giant,
+  body.booking-disabled .footer-col a[href="#book"] {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: .45;
+    filter: grayscale(.85);
+    box-shadow: none;
+    position: relative;
+  }
+  /* Kill hover/active motion on the disabled controls */
+  body.booking-disabled .btn-book:hover,
+  body.booking-disabled .nav-mobile-book:hover,
+  body.booking-disabled .drawer-book:hover,
+  body.booking-disabled .btn-hero-primary:hover,
+  body.booking-disabled .btn-giant:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  /* Wrapper keeps the control focusable-adjacent note readable to everyone */
+  .booking-note {
+    display: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+    color: rgba(244,239,227,.55);
+    margin-top: 18px;
+  }
+  body.booking-disabled .booking-note { display: block; }
+  .booking-note a {
+    color: var(--coral); border-bottom: 1px solid rgba(232,147,107,.4);
+    transition: color .3s var(--ease), border-color .3s var(--ease);
+  }
+  .booking-note a:hover { color: var(--cream); border-color: var(--cream); }
+
   /* ——— FOOTER ——— */
   footer {
     background: var(--olive-900);
@@ -1884,7 +1949,8 @@
 </style>
 </head>
 
-<body>
+<!-- Booking not live yet. TO ENABLE BOOKING: remove class="booking-disabled" below. -->
+<body class="booking-disabled">
 
 <!-- ============ COMING SOON OVERLAY ============ -->
 <div class="coming-soon" id="comingSoon">
@@ -2028,6 +2094,8 @@
       </div>
     </div>
     <div class="stats-grid">
+      <div class="sport-divider first">Badminton · 28 courts</div>
+
       <div class="stat sport-card bad-1">
         <div class="stat-sport">Badminton</div>
         <div class="num">18<sup>courts</sup></div>
@@ -2046,6 +2114,8 @@
         <div class="label">SVIP</div>
         <div class="sublabel">Competition grade</div>
       </div>
+      <div class="sport-divider">Pickleball · 8 courts</div>
+
       <div class="stat sport-card pick-1 group-start">
         <div class="stat-sport">Pickleball</div>
         <div class="num">6<sup>courts</sup></div>
@@ -2470,9 +2540,10 @@
   <div class="container">
     <h2>Ready to <em>play</em>?</h2>
     <p>28 badminton courts across Club, VIP and SVIP grades, plus 8 pickleball — reserve your court in under a minute. Peak hours move fast, so should you.</p>
-    <a href="#" class="btn-giant" onclick="alert('Booking system coming soon — stay tuned!'); return false;">
+    <a href="#book" class="btn-giant">
       Book a Court Now →
     </a>
+    <div class="booking-note">Online booking opens with the centre — <a href="#contact">contact us</a> to enquire</div>
   </div>
 </section>
 
@@ -2700,6 +2771,7 @@
     function maxIndex() { return Math.max(0, cards.length - visibleCount()); }
 
     function buildDots() {
+      if (!dotsEl) return;
       dotsEl.innerHTML = '';
       const count = maxIndex() + 1;
       for (let i = 0; i < count; i++) {
@@ -2715,11 +2787,11 @@
       const gap  = 24;
       const w    = cards[0].offsetWidth + gap;
       track.style.transform = `translateX(-${current * w}px)`;
-      dotsEl.querySelectorAll('.ann-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+      if (dotsEl) dotsEl.querySelectorAll('.ann-dot').forEach((d, i) => d.classList.toggle('active', i === current));
     }
 
-    prev.addEventListener('click', () => goTo(current - 1));
-    next.addEventListener('click', () => goTo(current + 1));
+    if (prev) prev.addEventListener('click', () => goTo(current - 1));
+    if (next) next.addEventListener('click', () => goTo(current + 1));
 
     buildDots();
     window.addEventListener('resize', () => { buildDots(); goTo(Math.min(current, maxIndex())); });
@@ -2795,6 +2867,26 @@
 
       status.textContent = 'Opening your email app… if nothing happens, email us directly at admin@vbc63.com.au';
       status.classList.add('show');
+    });
+  })();
+
+  /* Booking disabled — belt-and-braces alongside the CSS.
+     CSS pointer-events already blocks clicks; this stops keyboard activation
+     too and marks the controls up for assistive tech.
+     TO GO LIVE: remove class="booking-disabled" from <body>. */
+  (function() {
+    if (!document.body.classList.contains('booking-disabled')) return;
+
+    var sel = '.btn-book, .nav-mobile-book, .drawer-book, .btn-hero-primary,' +
+              '.btn-giant, .footer-col a[href="#book"]';
+
+    document.querySelectorAll(sel).forEach(function(el) {
+      el.setAttribute('aria-disabled', 'true');
+      el.setAttribute('tabindex', '-1');
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      });
     });
   })();
 </script>
