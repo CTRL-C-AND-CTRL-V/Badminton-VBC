@@ -1201,41 +1201,35 @@
   }
   .partner:hover { transform: translateY(-4px); }
   .partner .logo-box {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px; letter-spacing: .04em;
-    color: var(--olive-900);
-    padding: 18px 36px;
-    border: 2px solid var(--olive-800);
+    display: flex; align-items: center; justify-content: center;
+    height: clamp(56px, 7vw, 76px);
+    padding: 0;
     border-radius: var(--radius);
+    overflow: hidden;
     position: relative;
-    background: var(--cream);
+    box-shadow: 0 8px 24px -10px rgba(42,51,20,.35);
   }
-  .partner .logo-box.yonex { color: #0055a4; border-color: #0055a4; }
-  .partner .logo-box.yonex::after {
-    content: 'ⓇEG.';
-    font-family: 'Inter', sans-serif;
-    font-size: 9px; letter-spacing: .1em;
-    position: absolute; top: 6px; right: 8px;
-    color: #0055a4; opacity: .6;
-  }
-  .partner .logo-box.victor { color: #d4301e; border-color: #d4301e; }
-  .partner .logo-box.victor::before {
-    content: '▲';
-    font-size: 18px;
-    margin-right: 8px;
-    color: #d4301e;
+  .partner .logo-box img {
+    height: 100%; width: auto; display: block;
+    object-fit: contain;
   }
   .partner .partner-label {
     font-size: 11px; letter-spacing: .25em; text-transform: uppercase;
     color: var(--olive-700);
   }
   .partner-placeholder {
+    display: flex; align-items: center; justify-content: center;
+    height: clamp(56px, 7vw, 76px);
+    min-width: 190px;
     border: 2px dashed rgba(42,51,20,.3);
     color: rgba(42,51,20,.5);
     font-family: 'Bebas Neue', sans-serif;
     font-size: 24px; letter-spacing: .1em;
-    padding: 28px 40px;
+    padding: 0 32px;
     border-radius: var(--radius);
+  }
+  @media (max-width: 480px) {
+    .partner-placeholder { height: 46px; min-width: 150px; font-size: 19px; }
   }
 
   /* ——— SHOP ——— */
@@ -1811,7 +1805,7 @@
     /* Partners */
     section.partners { padding: 60px 0; }
     .partners-row { gap: 24px; }
-    .partner .logo-box { font-size: 32px; padding: 12px 20px; }
+    .partner .logo-box { height: 46px; }
 
     /* Testimonials */
     section.testimonials { padding: 60px 0; }
@@ -2292,15 +2286,15 @@
       <div class="map-wrap" id="visit">
         <div class="address-block">
           <div class="section-label"><span class="eyebrow">Find Us</span></div>
-          <h3>Victoria Badminton Centre</h3>
+          <h3>Victoria Badminton &amp; Pickleball Centre</h3>
           <p>2/63 Sunshine Road, West Footscray, Victoria 3012</p>
         </div>
         <div class="map-frame">
           <iframe
-            src="https://www.google.com/maps?q=2%2F63+Sunshine+Road,+West+Footscray+VIC+3012&output=embed"
+            src="https://www.google.com/maps?q=Victoria+Badminton+%26+Pickleball+Centre,+2%2F63+Sunshine+Road,+West+Footscray+VIC+3012&output=embed"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            title="Victoria Badminton Centre map"
+            title="Victoria Badminton &amp; Pickleball Centre map"
             allowfullscreen>
           </iframe>
         </div>
@@ -2363,29 +2357,29 @@
 
     <div class="contact-grid">
       <div class="contact-methods">
-        <a class="contact-method" href="mailto:info@victoriabadminton.com.au">
+        <a class="contact-method" href="mailto:admin@vbc63.com.au">
           <div class="icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
           <div>
             <div class="label">Email</div>
-            <div class="value">info@victoriabadminton.com.au</div>
+            <div class="value">admin@vbc63.com.au</div>
             <div class="hint">We reply within one business day.</div>
           </div>
         </a>
 
-        <a class="contact-method" href="tel:+61300000000">
+        <a class="contact-method" href="tel:+61456840871">
           <div class="icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
           </div>
           <div>
             <div class="label">Phone</div>
-            <div class="value">(03) 0000 0000</div>
-            <div class="hint">Open 7 days — see our opening hours above.</div>
+            <div class="value">0456 840 871</div>
+            <div class="hint">Call or text us — open 7 days.</div>
           </div>
         </a>
 
-        <a class="contact-method" href="https://www.google.com/maps/dir/?api=1&destination=2%2F63+Sunshine+Road,+West+Footscray+VIC+3012" target="_blank" rel="noopener">
+        <a class="contact-method" href="https://www.google.com/maps/dir/?api=1&destination=Victoria+Badminton+%26+Pickleball+Centre,+2%2F63+Sunshine+Road,+West+Footscray+VIC+3012" target="_blank" rel="noopener">
           <div class="icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
@@ -2395,17 +2389,6 @@
             <div class="hint">120+ free parking spaces. Get directions →</div>
           </div>
         </a>
-
-        <div class="contact-method">
-          <div class="icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.9-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 4 11.5a8.4 8.4 0 0 1 8.5-8.4h.5a8.4 8.4 0 0 1 8 8.4z"/></svg>
-          </div>
-          <div>
-            <div class="label">Social</div>
-            <div class="value">@victoriabadminton</div>
-            <div class="hint">Follow along for events, socials and court updates.</div>
-          </div>
-        </div>
       </div>
 
       <form class="contact-form" id="contactForm" novalidate>
@@ -2433,8 +2416,8 @@
           <select id="cfTopic" name="topic">
             <option>Court booking enquiry</option>
             <option>Coaching &amp; lessons</option>
-            <option>Corporate &amp; group events</option>
-            <option>Partnerships &amp; sponsorship</option>
+            <option>Social groups events</option>
+            <option>Partnerships</option>
             <option>Something else</option>
           </select>
         </div>
@@ -2445,7 +2428,7 @@
         </div>
 
         <button type="submit" class="btn-submit">Send Message <span class="arrow">→</span></button>
-        <p class="form-note">Prefer email? Reach us any time at info@victoriabadminton.com.au</p>
+        <p class="form-note">Prefer email? Reach us any time at admin@vbc63.com.au</p>
         <p class="form-status" id="cfStatus" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -2461,12 +2444,10 @@
     </div>
     <div class="partners-row">
       <div class="partner">
-        <div class="logo-box yonex">YONEX</div>
-        <div class="partner-label">Official Equipment</div>
+        <div class="logo-box"><img src="assets/Yonex.png" alt="Yonex" /></div>
       </div>
       <div class="partner">
-        <div class="logo-box victor">VICTOR</div>
-        <div class="partner-label">Official Gear</div>
+        <div class="logo-box"><img src="assets/Victor.png" alt="Victor" /></div>
       </div>
       <div class="partner">
         <div class="partner-placeholder">YOUR BRAND</div>
@@ -2716,8 +2697,8 @@
       <div class="footer-col">
         <h4>Contact</h4>
         <p>2/63 Sunshine Road<br>West Footscray, VIC 3012</p>
-        <p><a href="mailto:info@victoriabadminton.com.au">info@victoriabadminton.com.au</a></p>
-        <p><a href="tel:+61300000000">(03) 0000 0000</a></p>
+        <p><a href="mailto:admin@vbc63.com.au">admin@vbc63.com.au</a></p>
+        <p><a href="tel:+61456840871">0456 840 871</a></p>
         <p><a href="#contact">Send us a message →</a></p>
       </div>
     </div>
@@ -2875,11 +2856,11 @@
         message
       ].filter(Boolean).join('\n');
 
-      window.location.href = 'mailto:info@victoriabadminton.com.au'
+      window.location.href = 'mailto:admin@vbc63.com.au'
         + '?subject=' + encodeURIComponent('[Website] ' + topic + ' — ' + name)
         + '&body=' + encodeURIComponent(body);
 
-      status.textContent = 'Opening your email app… if nothing happens, email us directly at info@victoriabadminton.com.au';
+      status.textContent = 'Opening your email app… if nothing happens, email us directly at admin@vbc63.com.au';
       status.classList.add('show');
     });
   })();
