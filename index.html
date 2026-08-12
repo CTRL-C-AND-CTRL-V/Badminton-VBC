@@ -296,6 +296,17 @@
     .nav-btn-group { display: none; }
     .nav-mobile-book { display: inline-flex; }
   }
+  /* Very narrow phones (≤360px): tighten the nav so it can't overflow */
+  @media (max-width: 360px) {
+    .container { padding: 0 14px; }
+    .brand img { width: 34px; height: 34px; }
+    .brand { gap: 7px; }
+    .brand-text .l1 { font-size: 15px; }
+    .brand-text .l2 { font-size: 8px; letter-spacing: .16em; }
+    .nav-end { gap: 6px; }
+    .nav-mobile-book { font-size: 12px; height: 36px; padding: 0 11px; }
+    .nav-hamburger { width: 34px; height: 34px; }
+  }
 
   .btn-book {
     font-family: 'Bebas Neue', sans-serif;
@@ -1098,7 +1109,9 @@
   .contact-method .value {
     font-family: 'Fraunces', serif; font-size: 19px; font-weight: 400;
     color: var(--olive-900); line-height: 1.35;
+    overflow-wrap: anywhere; word-break: break-word;
   }
+  .contact-method > div:last-child { min-width: 0; }
   .contact-method .hint {
     font-size: 13px; color: var(--olive-700); margin-top: 6px; line-height: 1.5;
   }
@@ -1931,8 +1944,8 @@
       </div>
     </a>
     <ul>
-      <li><a href="#about">About</a></li>
       <li><a href="#courts">Courts</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#gallery">Facilities</a></li>
       <li><a href="#hours">Hours</a></li>
       <li><a href="#visit">Visit</a></li>
@@ -1956,8 +1969,8 @@
 <!-- ============ MOBILE DRAWER ============ -->
 <nav class="nav-drawer" id="navDrawer">
   <ul>
-    <li><a href="#about" class="drawer-link">About</a></li>
     <li><a href="#courts" class="drawer-link">Courts</a></li>
+    <li><a href="#about" class="drawer-link">About</a></li>
     <li><a href="#gallery" class="drawer-link">Facilities</a></li>
     <li><a href="#hours" class="drawer-link">Hours</a></li>
     <li><a href="#visit" class="drawer-link">Visit</a></li>
